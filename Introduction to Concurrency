@@ -1,0 +1,52 @@
+### Introduction to Concurrency
+
+1. **Definition of Concurrency**  
+   - **Explanation**: Concurrency refers to the ability of an operating system to manage the execution of multiple instruction sequences (threads or processes) at the same time.
+       This doesn’t necessarily mean they run simultaneously on a single CPU (which would be parallelism), but rather that they progress independently and can overlap in time.
+       It happens when several threads within processes run in parallel, often supported by the operating system to improve efficiency and responsiveness.
+
+2. **Thread**  
+   - **Explanation**: A thread is a basic unit of processing within a program or process.  
+     - *Single sequence stream within a process*: It represents a single flow of instructions.  
+     - *Independent path of execution*: Each thread can run on its own, allowing multitasking within a single process.  
+     - *Lightweight process*: Threads use fewer resources than full processes because they share the same memory space and resources of their parent process.  
+     - *Achieves parallelism*: By splitting a process’s tasks into independent threads, it enables parallel execution.  
+     - *Example*: In a browser, each tab can be a thread handling its own content, while a text editor might use threads for typing, spell checking, formatting, and saving simultaneously.
+
+3. **Thread Scheduling**  
+   - **Explanation**: Thread scheduling is the process by which the operating system decides which thread to run and when. Threads are prioritized, meaning higher-priority threads get more CPU time.
+       The OS divides the processor’s time into small slices and assigns them to threads, ensuring all threads get a chance to execute, even within the same runtime environment.
+       This helps manage multiple tasks efficiently.
+
+4. **Threads Context Switching**  
+   - **Explanation**: Context switching is when the OS pauses one thread and switches to another within the same process.  
+     - *Saves current state*: The OS stores the thread’s current state (program counter, registers, stack) to resume later.  
+     - *No memory address switch*: Unlike process switching, it doesn’t change the memory space, making it faster.  
+     - *Fast switching*: It’s quicker than process switching due to preserved CPU cache and shared memory.  
+     - *Preserved cache*: The CPU’s cache state remains intact, reducing overhead.
+
+5. **How Each Thread Gets Access to the CPU?**  
+   - **Explanation**: Threads access the CPU through a coordinated mechanism:  
+     - *Own program counter*: Each thread has its own pointer to the next instruction to execute.  
+     - *Scheduling algorithm*: The OS uses a scheduling algorithm (e.g., round-robin or priority-based) to decide which thread runs next.  
+     - *Instruction execution*: The OS fetches and executes instructions based on the thread’s program counter, ensuring orderly progress.
+
+6. **I/O or TQ-Based Context Switching**  
+   - **Explanation**: Context switching can be triggered by I/O operations (e.g., waiting for input) or a time quantum (TQ) expiring.  
+     - *TCB usage*: A Thread Control Block (TCB), similar to a Process Control Block (PCB), stores the thread’s state (e.g., registers, priority) during switching.
+        This helps the OS manage and restore thread states efficiently while handling I/O or time-based interruptions.
+
+7. **Will a Single CPU System Gain by Multi-Threading Technique?**  
+   - **Explanation**: On a single CPU, multi-threading doesn’t provide a performance boost:  
+     - *Never*: The CPU can only execute one thread at a time.  
+     - *Context switching overhead*: Switching between threads on a single CPU wastes time due to state saving and loading.  
+     - *No gain*: Since there’s no parallel execution, the benefits are limited, and the overhead can even slow things down.
+
+8. **Benefits of Multi-Threading**  
+   - **Explanation**: Multi-threading offers several advantages:  
+     - *Responsiveness*: Threads allow a program to remain responsive (e.g., a GUI can update while a task runs in the background).  
+     - *Resource Sharing*: Threads within a process share memory and resources efficiently, reducing duplication.  
+     - *Economy*: Creating and switching threads is cheaper than creating new processes, as it avoids the cost of allocating new memory and resources.  
+       - *Process creation cost*: Since starting a new process is resource-intensive, dividing tasks into threads within the same process is more practical.  
+     - *Multiprocessor utilization*: Threads enable better use of multiple CPUs, improving scale and efficiency in multi-core systems.
+
