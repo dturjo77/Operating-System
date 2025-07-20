@@ -1,8 +1,8 @@
-  🧠 Imagine You and Your Friends Playing a Game 🎮
+ 🧠 Imagine You and Your Friends Playing a Game 🎮
       You all want to take turns to use something like a swing, a toy, or even a game controller. But you need rules so no one fights and everyone plays nicely. That’s where conditional
       variables and semaphores help!
 
-   1. ***🕓 Conditional Variable What is it?***
+   1. **🕓 Conditional Variable What is it?**
 
        It’s like saying:
        🧒: “I’ll wait here until someone tells me it’s my turn!”
@@ -22,7 +22,7 @@
        You don’t need to keep checking over and over (no "busy waiting").
        It's quiet and polite. No pushing!
 
-    2. ***🔢 SemaphoresWhat is it?***
+    2. **🔢 SemaphoresWhat is it?**
 
         It’s like a counter that shows how many toys are left.
         If it says 3, then 3 kids can play at the same time.
